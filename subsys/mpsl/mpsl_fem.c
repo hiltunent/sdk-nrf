@@ -289,6 +289,7 @@ static int fem_nrf21540_gpio_configure(void)
 	}
 #endif
 	(void)err;
+	(void)inactive_pin_configure;
 
 	return mpsl_fem_nrf21540_gpio_interface_config_set(&cfg);
 }
