@@ -56,6 +56,7 @@ enum location_accuracy {
 	LOCATION_ACCURACY_LOW,
 	/** Normal accuracy. */
 	LOCATION_ACCURACY_NORMAL,
+	LOCATION_ACCURACY_HIGH,
 };
 
 /** Location service. */
@@ -147,6 +148,16 @@ struct location_gnss_config {
 
 	/** Desired accuracy level. */
 	enum location_accuracy accuracy;
+
+	/**
+	 * @brief If accuracy is set to LOC_ACCURACY_HIGH, instead of using the first fix, GNSS
+	 * is allowed to run for a longer time and produce the configured number fixes before the
+	 * library outputs the current location.
+	 *
+	 * @details This typically improves the location accuracy. If accuracy is set to
+	 * LOC_ACCURACY_NORMAL or LOC_ACCURACY_LOW this parameter has no effect.
+	 */
+	uint8_t num_consecutive_fixes;
 };
 
 /** LTE cellular positioning configuration. */
